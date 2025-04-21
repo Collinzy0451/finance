@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5" style="max-width: 500px;">
+    <div class="card shadow-sm p-4">
+        <h4 class="mb-4 text-center">Register</h4>
+        {% if success %}
+        <div class="alert alert-success">{{ success }}</div>
+        {% endif %}
+        <form method="POST">
+            <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" required>
+            </div>
+            <div class="mb-3">
+                <label for="reg_email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="reg_email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="reg_password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="reg_password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="btn btn-success w-100">Register</button>
+        </form>
+        <p class="mt-3 text-center">Already have an account? <a href="/login">Login</a></p>
+    </div>
+</div>
+{% endblock %}

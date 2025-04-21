@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="profileNav">
+      <ul class="navbar-nav nav nav-pills w-100 justify-content-between flex-md-row">
+        <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="/transactions">Transactions</a></li>
+        <li class="nav-item"><a class="nav-link" href="/deposit">Deposit</a></li>
+        <li class="nav-item"><a class="nav-link" href="/withdraw">Withdraw</a></li>
+      </ul>
+    </div>
+  </div>
+  
+</nav>
+
+<!-- Profile Section -->
+<div class="container">
+  <div class="row">
+    <!-- Left Profile Info -->
+    <div class="col-lg-4 mb-4">
+      <div class="card text-center shadow-sm">
+        <div class="card-body">
+          <img src="../static/image/team1.jpg" class="rounded-circle img-fluid mb-3" style="width: 120px;" alt="User">
+          <h4 class="card-title mb-0">Kelvin Butschaer</h4>
+          <p class="text-muted">Account Holder</p>
+        </div>
+      </div>
+
+      <!-- Profile Tabs -->
+      <div class="list-group mt-4">
+        <a href="#" class="list-group-item list-group-item-action active" data-bs-toggle="list">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list">Settings</a>
+        <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list">Change Password</a>
+      </div>
+    </div>
+
+    <!-- Right Detail Panel -->
+    <div class="col-lg-8">
+      <div class="tab-content">
+        <!-- Overview Tab -->
+        <div class="tab-pane fade show active" id="overview">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-person-badge me-2"></i>Profile Overview</span>
+              <a href="/settings" class="text-white text-decoration-none"><i class="bi bi-gear me-1"></i> Settings</a>
+            </div>
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Full Name</strong></div>
+                <div class="col-sm-8">Kelvin Butschaer</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Company</strong></div>
+                <div class="col-sm-8">Lueilwits Batowski inc.</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Occupation</strong></div>
+                <div class="col-sm-8">Entrepreneur</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Email</strong></div>
+                <div class="col-sm-8">kevscill@yahoo.com</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Phone</strong></div>
+                <div class="col-sm-8">+436 801 234 5678</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>Date Joined</strong></div>
+                <div class="col-sm-8">Jan 12, 2023</div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4"><strong>KYC Status</strong></div>
+                <div class="col-sm-8"><span class="badge bg-success">Verified</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="{{ url_for('logout') }}" class="btn btn-outline-danger float-end">
+          Logout
+      </a>
+      
+
+        <!-- Edit Profile -->
+        <div class="tab-pane fade" id="edit">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-secondary text-white">
+              <i class="bi bi-pencil-square me-2"></i>Edit Profile
+            </div>
+            <div class="card-body">
+              <p class="text-muted">Edit functionality coming soon...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="tab-pane fade" id="settings">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white">
+              <i class="bi bi-sliders me-2"></i>Settings
+            </div>
+            <div class="card-body">
+              <p class="text-muted">Settings functionality coming soon...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Change Password -->
+        <div class="tab-pane fade" id="change-password">
+          <div class="card shadow-sm mb-4">
+            <div class="card-header bg-warning text-dark">
+              <i class="bi bi-lock me-2"></i>Change Password
+            </div>
+            <div class="card-body">
+              <p class="text-muted">Change password functionality coming soon...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

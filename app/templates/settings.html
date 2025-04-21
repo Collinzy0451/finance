@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h4 class="mb-4">⚙️ Settings</h4>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            Profile Information
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Full Name">
+                </div>
+                <div class="mb-3">
+                    <label for="emailAddress" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="newemail@user.com">
+                </div>
+                <div class="mb-3">
+                    <label for="phoneNumber" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phoneNumber" placeholder="+234 000 0000 000">
+                </div>
+                <button class="btn btn-outline-primary" disabled>Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-secondary text-white">
+            Security Settings
+        </div>
+        <div class="card-body">
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="twoFactorAuth" checked disabled>
+                <label class="form-check-label" for="twoFactorAuth">Two-Factor Authentication (Enabled)</label>
+            </div>
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" id="notifications" disabled>
+                <label class="form-check-label" for="notifications">Login Notifications (Disabled)</label>
+            </div>
+            <p class="text-muted">For security reasons, these settings are only functional with the original user.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

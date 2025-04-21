@@ -1,0 +1,480 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="/">SmartFinance</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Accounts & Trade -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="accountsDropdown" role="button" data-bs-toggle="dropdown">
+            Accounts & Trade
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/transactions">Transactions</a></li>
+            <li><a class="dropdown-item" href="/stocks">Stock Portfolio</a></li>
+            <li><a class="dropdown-item" href="/dashboard">Forex Watch</a></li>
+          </ul>
+        </li>
+
+        <!-- Planning & Advice -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="planningDropdown" role="button" data-bs-toggle="dropdown">
+            Planning & Advice
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#tools-calculators">Budgeting Tools</a></li>
+            <li><a class="dropdown-item" href="#tools-calculators">Investment Planning</a></li>
+            <li><a class="dropdown-item" href="#tools_calculators">Retirement Advice</a></li>
+          </ul>
+        </li>
+
+        <!-- Products -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown">
+            Products
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/deposit">Deposit</a></li>
+            <li><a class="dropdown-item" href="/withdraw">Withdraw</a></li>
+            <li><a class="dropdown-item" href="/dashboard">Savings Wallet</a></li>
+            <li><a class="dropdown-item" href="/dashboard">Investment Wallet</a></li>
+          </ul>
+        </li>
+
+        <!-- Why Us -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="whyusDropdown" role="button" data-bs-toggle="dropdown">
+            Why Us
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#security-compliance">Security</a></li>
+            <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
+            <li><a class="dropdown-item" href="#why-choose-us">Our Mission</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="bg-primary text-white text-center p-5">
+  <h1>Welcome to <span style="color: rgb(248, 187, 19);">SmartFinance.</span> A Smarter Way to Manage Your Finance</h1>
+  <p class="lead">Secure Banking, Strategic Investing & Seamless Planning.</p>
+  <a href="/dashboard" class="btn btn-light btn-lg mt-3">Go to Dashboard</a>
+</header>
+
+
+<!-- WHY CHOOSE US -->
+<section class="container text-center my-5" style="padding-top: 0;" id="why-choose-us">
+  <h3>Why Choose Us?</h3>
+  <p class="lead mb-4">We empower your financial future with cutting-edge tools, trusted advisory, and a secure platform.</p>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <i class="bi bi-shield-check display-4 text-primary"></i>
+      <h5 class="mt-3">Security & Trust</h5>
+      <p>Your funds and data are protected with advanced security protocols.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-bar-chart-line-fill display-4 text-success"></i>
+      <h5 class="mt-3">Smart Investments</h5>
+      <p>Diversify into stocks, forex, crypto, and more — all in one place.</p>
+    </div>
+    <div class="col-md-4">
+      <i class="bi bi-people-fill display-4 text-warning"></i>
+      <h5 class="mt-3">Expert Advisory</h5>
+      <p>Get personalized advice from seasoned wealth managers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="bg-light py-5">
+  <div class="container">
+    <h3 class="text-center mb-4">What You Can Do</h3>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <img src="../static/image/pic1.jpg" class="img-fluid rounded mb-2" alt="Investment">
+        <h6>Invest Smart</h6>
+        <p>Start investing in local & global markets with flexible portfolios.</p>
+      </div>
+      <div class="col-md-3">
+        <img src="../static/image/pic2.jpg" class="img-fluid rounded mb-2" alt="Save Smart">
+        <h6>Save Efficiently</h6>
+        <p>Automated savings plans to help you reach your goals faster.</p>
+      </div>
+      <div class="col-md-3">
+        <img src="../static/image/pic3.jpg" class="img-fluid rounded mb-2" alt="Advice">
+        <h6>Plan Ahead</h6>
+        <p>Financial planning tools for retirement, emergency, and legacy.</p>
+      </div>
+      <div class="col-md-3">
+        <img src="../static/image/pic4.jpeg" class="img-fluid rounded mb-2" alt="Forex">
+        <h6>Trade Forex</h6>
+        <p>Access live FX rates and trade confidently with our tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- investment plans -->
+<section class="container my-5" style="padding-top: 0;">
+  <h2 class="text-center mb-4">Investment Plans</h2>
+  <div class="row text-center">
+    
+    <!-- Silver Plan -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <img src="{{ url_for('static', filename='image/silver.png') }}" alt="Silver Plan" style="width: 60px; height: 60px; margin-bottom: 10px;">
+          <h4>Silver Plan</h4>
+          <p>$300,000 Minimum</p>
+          <p>20% Monthly Returns</p>
+         <a href="{{url_for ('deposit') }}"> <button class="btn btn-outline-primary">Start Silver</button> </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gold Plan -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <img src="{{ url_for('static', filename='image/gold.png') }}" alt="Gold Plan" style="width: 60px; height: 60px; margin-bottom: 10px;">
+          <h4>Gold Plan</h4>
+          <p>$500,000 Minimum</p>
+          <p>35% Monthly Returns</p>
+         <a href="{{ url_for('deposit') }}"> <button class="btn btn-outline-warning">Start Gold</button></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Platinum Plan -->
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <img src="{{ url_for('static', filename='image/platinum.png') }}" alt="Platinum Plan" style="width: 60px; height: 60px; margin-bottom: 10px;">
+          <h4>Platinum Plan</h4>
+          <p>$1,000,000 Minimum</p>
+          <p>60% Monthly Returns</p>
+         <a href="{{url_for('deposit') }}"> <button class="btn btn-outline-dark">Start Platinum</button></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- TOOLS & CALCULATORS -->
+<section class="container my-5 text-center" style="padding-top: 0;" id="tools-calculators">
+  <h3>Tools & Calculators</h3>
+  <p>Get insights before you invest or save. Try out our financial tools.</p>
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5>Investment Calculator</h5>
+          <p>Estimate potential growth based on your investment goals.</p>
+          <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#investmentModal">
+            Try It
+          </button>
+         </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5>Retirement Planner</h5>
+          <p>Estimate how much you’ll have saved by retirement.</p>
+          <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#retirementModal">
+            Try It
+          </button>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+
+<!-- Live Market Statistics Section -->
+<section id="market-stats" class="market-stats">
+  <div class="container">
+      <div class="section-title">
+          <h2>Live Market Statistics</h2>
+          <p>Stay updated with the latest market trends and statistics.</p>
+      </div>
+
+      <div class="stats-wrapper">
+          <!-- Dynamic Statistics -->
+          <div class="stats-box">
+              <h3>Total Investors</h3>
+              <p id="total-investors">1,000+</p>
+          </div>
+
+          <div class="stats-box">
+              <h3>Total Investments</h3>
+              <p id="total-investments">$5,000,000+</p>
+          </div>
+
+          <div class="stats-box">
+              <h3>Years of Experience</h3>
+              <p>5+ Years</p>
+          </div>
+
+          <div class="stats-box">
+              <h3>Payouts Processed</h3>
+              <p id="payouts-processed">$2,500,000+</p>
+          </div>
+      </div>
+
+      <!-- Market Chart -->
+      <div class="chart-container">
+          <canvas id="marketChart"></canvas>
+      </div>
+  </div>
+</section>
+
+<section class="bitcoin-stats">
+  <h2>📊 Live Bitcoin Statistics</h2>
+  <div class="stats-grid">
+      <div class="stat-box">
+          <h3>Bitcoin Price</h3>
+          <p id="btc-price">Loading...</p>
+      </div>
+      <div class="stat-box">
+          <h3>24h Change</h3>
+          <p id="btc-change">Loading...</p>
+      </div>
+      <div class="stat-box">
+          <h3>Market Cap</h3>
+          <p id="btc-marketcap">Loading...</p>
+      </div>
+  </div>
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+<section class="container my-5" id="testimonials">
+  <h3 class="text-center">What Our Clients Say</h3>
+  <div class="row g-4 mt-4">
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm text-center p-3 h-100">
+        <img src="../static/image/tes1.webp" class="rounded-circle mb-3" width="80" alt="User 1">
+        <p>"This platform changed the way I save and invest. Super easy to use!"</p>
+        <h6 class="text-primary">- Sarah M.</h6>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm text-center p-3 h-100">
+        <img src="../static/image/tes2.jpg" class="rounded-circle mb-3" width="80" alt="User 2">
+        <p>"The advisors helped me build my first real investment portfolio."</p>
+        <h6 class="text-primary">- David O.</h6>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-0 shadow-sm text-center p-3 h-100">
+        <img src="../static/image/tes3.png" class="rounded-circle mb-3" width="80" alt="User 3">
+        <p>"Forex trading has never been this clean and straightforward."</p>
+        <h6 class="text-primary">- Mark K.</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Security & Compliance Section -->
+<section id="security-compliance" class="security-compliance">
+  <div class="container">
+      <div class="section-title">
+          <h2>Security & Compliance</h2>
+          <p>Your funds and data are protected with industry-leading security measures.</p>
+      </div>
+
+      <div class="security-wrapper">
+          <div class="security-item">
+              <i class="fas fa-lock"></i>
+              <h3>Bank-Level Encryption</h3>
+              <p>We use advanced encryption protocols to secure your transactions and personal data.</p>
+          </div>
+
+          <div class="security-item">
+              <i class="fas fa-user-check"></i>
+              <h3>KYC Verification</h3>
+              <p>All users must complete KYC to prevent fraud and ensure compliance with regulations.</p>
+          </div>
+
+          <div class="security-item">
+              <i class="fas fa-shield-alt"></i>
+              <h3>Anti-Fraud System</h3>
+              <p>Our AI-driven fraud detection system monitors transactions for suspicious activity.</p>
+          </div>
+      </div>
+
+      <div class="trusted-partners">
+      <h3>Trusted Partners</h3>
+      <div class="partners-logos">
+          <img src="../static/image/appl.png" alt="Apple">
+          <img src="../static/image/binance.avif" alt="Binance">
+          <img src="../static/image/visa.webp" alt="Visa">
+          <img src="../static/image/mastercard.png" alt="Mastercard">
+      </div>
+  </div>
+  </div>
+</section>
+
+<!-- Contact & Support Section -->
+<section id="contact-support" class="contact-support" style="margin-top: 50px;">
+  <div class="container">
+      <div class="section-title">
+          <h2>Contact & Support</h2>
+          <p>We're here to help. Get in touch with us anytime.</p>
+      </div>
+
+      <div class="contact-wrapper">
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form action="/contact" method="POST">
+              <input type="text" name="name" placeholder="Your Name" required>
+              <input type="email" name="email" placeholder="Your Email" required>
+              <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+              <button type="submit">Send Message</button>
+          </form>
+      </div>
+      
+
+          <!-- Contact Details -->
+          <div class="contact-details">
+              <h3>Contact Information</h3>
+              <p><i class="fas fa-envelope"></i> support@saki.com</p>
+              <p><i class="fas fa-phone"></i> +123 456 7890</p>
+              <p><i class="fas fa-map-marker-alt"></i> 123 Investment Street, New York, USA</p>
+
+              <!-- Live Chat Option -->
+              <!-- <div class="live-chat">
+                  <a href="#" class="chat-button"><i class="fas fa-comments"></i> Live Chat</a>
+              </div> -->
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Investment Calculator Modal -->
+<div class="modal fade" id="investmentModal" tabindex="-1" aria-labelledby="investmentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="investmentModalLabel">Investment Calculator</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="calcForm" class="row g-3">
+          <div class="col-md-6">
+            <input type="number" id="initial" class="form-control" placeholder="Initial Investment ($)" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="monthly" class="form-control" placeholder="Monthly Contribution ($)" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="rate" class="form-control" placeholder="Annual Interest Rate (%)" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="years" class="form-control" placeholder="Investment Duration (Years)" required>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </div>
+        </form>
+
+        <div class="text-center mt-4">
+          <h6 id="resultText" class="text-success fw-bold"></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Retirement Planner Modal -->
+<div class="modal fade" id="retirementModal" tabindex="-1" aria-labelledby="retirementModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="retirementModalLabel">Retirement Planner</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="retireForm" class="row g-3">
+          <div class="col-md-6">
+            <input type="number" id="currentAge" class="form-control" placeholder="Current Age" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="retirementAge" class="form-control" placeholder="Retirement Age" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="monthlySave" class="form-control" placeholder="Monthly Savings ($)" required>
+          </div>
+          <div class="col-md-6">
+            <input type="number" id="retireRate" class="form-control" placeholder="Expected Annual Return (%)" required>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-success">Calculate</button>
+          </div>
+        </form>
+
+        <div class="text-center mt-4">
+          <h6 id="retireResult" class="text-primary fw-bold"></h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>SmartFinance</h3>
+        <p>Secure. Smart. Strategic.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="{{url_for('home') }}">Home</a></li>
+          <li><a href="{{url_for('dashboard') }}">Dashboard</a></li>
+          <li><a href="{{url_for('stocks') }}">Stocks</a></li>
+          <li><a href="{{url_for('dashboard') }}#forex">Forex</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>Email: support@smartFinance.com</p>
+        <p>Phone: +234 812 345 6789</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <p class="copyright">&copy; 2025 SmartFinance. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+{% endblock %}

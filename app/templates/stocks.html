@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mb-4">
+    <h2 class="mb-3">📊 Stock Market Overview</h2>
+
+    <!-- Filter/Search Bar -->
+    <div class="mb-4">
+        <input type="text" class="form-control" placeholder="Search for a stock (e.g., AAPL, TSLA, MTNN)">
+    </div>
+
+    <!-- Top Movers -->
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    Top Gainers
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">TSLA +4.32%</li>
+                    <li class="list-group-item">MTNN +3.18%</li>
+                    <li class="list-group-item">ZENITHBANK +2.95%</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    Top Losers
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">AIRTELAFRI -3.12%</li>
+                    <li class="list-group-item">UBA -2.41%</li>
+                    <li class="list-group-item">GTCO -1.88%</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <!-- <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">📈 Market Activity Chart</h5>
+            <canvas id="marketChart" height="100"></canvas>
+        </div>
+    </div> -->
+
+    <!-- Your Portfolio Section -->
+<div class="card shadow-sm mt-4" style="margin-bottom: 20px;">
+    <div class="card-body">
+        <h5 class="card-title">📁 Your Portfolio</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Quantity</th>
+                        <th>Avg. Buy Price</th>
+                        <th>Total Value</th>
+                        <th>Gain/Loss</th>
+                        <th>Trend</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MTNN</td>
+                        <td>150</td>
+                        <td>₦220.00</td>
+                        <td>₦35,100.00</td>
+                        <td class="text-success">+₦2,100.00</td>
+                        <td><canvas id="mtnnChart" height="50" width="100"></canvas></td>
+                    </tr>
+                    <tr>
+                        <td>AAPL</td>
+                        <td>10</td>
+                        <td>$150.00</td>
+                        <td>$1,722.50</td>
+                        <td class="text-success">+$222.50</td>
+                        <td><canvas id="aaplChart" height="50" width="100"></canvas></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+    <!-- Dummy Stock Table -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">🧾 Stock Listings</h5>
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Company</th>
+                            <th>Price</th>
+                            <th>Change (%)</th>
+                            <th>Volume</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AAPL</td>
+                            <td>Apple Inc.</td>
+                            <td>$172.25</td>
+                            <td class="text-success">+2.12%</td>
+                            <td>56.7M</td>
+                        </tr>
+                        <tr>
+                            <td>MTNN</td>
+                            <td>MTN Nigeria</td>
+                            <td>₦234.00</td>
+                            <td class="text-success">+3.18%</td>
+                            <td>1.2M</td>
+                        </tr>
+                        <tr>
+                            <td>UBA</td>
+                            <td>United Bank for Africa</td>
+                            <td>₦9.80</td>
+                            <td class="text-danger">-2.41%</td>
+                            <td>980K</td>
+                        </tr>
+                        <tr>
+                            <td>GOOGL</td>
+                            <td>Alphabet Inc.</td>
+                            <td>$132.44</td>
+                            <td class="text-success">+1.04%</td>
+                            <td>21.3M</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Chart Script -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('marketChart').getContext('2d');
+    const marketChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['MTNN', 'UBA', 'AAPL', 'GOOGL', 'ZENITHBANK', 'GTCO'],
+            datasets: [{
+                label: 'Price (₦/$)',
+                data: [234, 9.8, 172, 132, 25, 32],
+                backgroundColor: ['#198754', '#dc3545', '#0d6efd', '#ffc107', '#6610f2', '#20c997'],
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
+<script>
+    const createMiniChart = (canvasId, data, borderColor) => {
+        new Chart(document.getElementById(canvasId).getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: data.map((_, i) => i + 1),
+                datasets: [{
+                    data,
+                    borderColor,
+                    fill: false,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                responsive: false,
+                plugins: { legend: { display: false }},
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                }
+            }
+        });
+    };
+
+    // Dummy mini charts
+    createMiniChart("mtnnChart", [220, 224, 230, 232, 234], "#198754"); // Green line
+    createMiniChart("aaplChart", [150, 160, 165, 170, 172], "#0d6efd"); // Blue line
+</script>
+
+{% endblock %}

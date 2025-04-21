@@ -1,0 +1,287 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-controls="profileNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="profileNav">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/transactions">Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/deposit">Deposit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/withdraw">Withdraw</a>
+        </li>
+      </ul>
+    </div>
+
+     <!-- Top Right Icons -->
+     <div class="d-flex align-items-center ms-auto">
+        <a href="/notifications" class="me-3 position-relative text-dark">
+          <i class="bi bi-bell fs-5"></i>
+          <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+        </a>
+        <a href="/profile">
+          <img src="../static/image/team1.jpg" alt="Profile" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+        </a>
+      </div>
+  </div>
+
+   
+  
+   
+  
+</nav>
+
+<div class="card shadow-sm mb-4 text-center p-4">
+  <h5 class="text-muted">Total Balance</h5>
+  <h2 class="fw-bold">
+    <span id="balanceAmount">$5,200,500.00</span>
+    <i class="bi bi-eye-slash" id="toggleBalance" style="cursor: pointer;"></i>
+  </h2>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Account Balance</h6>
+          <h4 class="fw-bold">$2,400,000.00</h4>
+          <p class="text-success">↑ +5.6% from last month</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Investment Balance</h6>
+          <h4 class="fw-bold">$1,200,000.00</h4>
+          <p class="text-success">↑ +3.2% from last month</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Savings Balance</h6>
+          <h4 class="fw-bold">$800,000.00</h4>
+          <p class="text-danger">↓ -1.2% from last month</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card p-4 mb-4 shadow-sm">
+    <h5>Your Investment Plan: <strong>Silver</strong></h5>
+    <p>Current Investment: $300,000</p>
+    <p>$200,000 more to reach Gold plan</p>
+    
+    <div class="progress mb-2" style="height: 20px;">
+      <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+        60%
+      </div>
+    </div>
+  </div>
+  
+
+<div class="row g-4 mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Spending Overview</h5>
+        <canvas id="spendingChart" height="200"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary">
+      <div class="card-body">
+        <h6>USD/NGN</h6>
+        <p>₦1350.25 <span class="text-success">+0.72%</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-secondary">
+      <div class="card-body">
+        <h6>EUR/USD</h6>
+        <p>1.0875 <span class="text-danger">-0.15%</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-success">
+      <div class="card-body">
+        <h6>GBP/JPY</h6>
+        <p>163.45 <span class="text-success">+0.52%</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4" id="forex">
+  <div class="card-body">
+    <h5 class="card-title">Your Forex Watchlist</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between">
+        USD/NGN <span class="badge bg-info">Watching</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+        EUR/USD <span class="badge bg-warning text-dark">Trade Alert</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Forex Line Chart -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h5 class="card-title">USD/NGN Rate Trend</h5>
+    <canvas id="forexChart" height="100"></canvas>
+  </div>
+</div>
+
+<!-- Stock Market Snapshot -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="card-title">📈 Stock Market Snapshot</h5>
+      <a href="/stocks" class="btn btn-sm btn-outline-primary">View Full Portfolio →</a>
+    </div>
+
+    <div class="table-responsive mb-3">
+      <table class="table table-sm table-bordered align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Stock</th>
+            <th>Qty</th>
+            <th>Price (₦)</th>
+            <th>Value (₦)</th>
+            <th>P/L</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GTBANK</td>
+            <td>50</td>
+            <td>240.00</td>
+            <td>₦12,000</td>
+            <td class="text-success">+₦1,500</td>
+          </tr>
+          <tr>
+            <td>UBA</td>
+            <td>100</td>
+            <td>180.00</td>
+            <td>₦6,800</td>
+            <td class="text-danger">-₦300</td>
+          </tr>
+          <tr>
+            <td>ZENITHBANK</td>
+            <td>80</td>
+            <td>200.50</td>
+            <td>₦9,040</td>
+            <td class="text-success">+₦640</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div>
+      <canvas id="stockMiniChart" height="100"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js (only once) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Spending Overview Chart (you can change this to pie/doughnut if needed)
+  const spendingCtx = document.getElementById('spendingChart').getContext('2d');
+  new Chart(spendingCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Deposit', 'Stocks', 'Profits', 'Losses', 'Savings'],
+      datasets: [{
+        data: [40000, 25000, 30000, 150, 23000],
+        backgroundColor: ['#0d6efd', '#dc3545', '#ffc107', '#198754' , '#6c757d'],
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+
+  // Mini Stock Chart
+  const miniCtx = document.getElementById('stockMiniChart').getContext('2d');
+  new Chart(miniCtx, {
+    type: 'bar',
+    data: {
+      labels: ['MTNN', 'UBA', 'ZENITHBANK'],
+      datasets: [{
+        label: 'Portfolio Value (₦)',
+        data: [10000, 9000, 4040],
+        backgroundColor: ['#0d6efd', '#dc3545', '#198754']
+      }]
+    },
+    options: {
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: value => `₦${value.toLocaleString()}`
+          }
+        }
+      }
+    }
+  });
+
+  // Forex USD/NGN Line Chart
+  const forexCtx = document.getElementById('forexChart').getContext('2d');
+  new Chart(forexCtx, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+      datasets: [{
+        label: 'USD/NGN',
+        data: [1345, 1348, 1350, 1352, 1350],
+        borderColor: '#0d6efd',
+        fill: false,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}

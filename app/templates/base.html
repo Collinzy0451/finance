@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+   
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="alert alert-success text-center">
+      {{ messages[0] }}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+
+    <div class="container mt-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const toggleBtn = document.getElementById('toggleBalance');
+    const balanceText = document.getElementById('balanceAmount');
+    let visible = true;
+    toggleBtn.addEventListener('click', () => {
+        if (visible) {
+            balanceText.textContent = '₦•••••••••';
+            toggleBtn.classList.replace('bi-eye-slash', 'bi-eye');
+        } else {
+            balanceText.textContent = '₦1,200,500.00';
+            toggleBtn.classList.replace('bi-eye', 'bi-eye-slash');
+        }
+        visible = !visible;
+    });
+
+    const ctx = document.getElementById('spendingChart');
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Deposit', 'Stocks', 'Profits', 'Losses', 'Savings'],
+            datasets: [{
+                label: '₦',
+                data: [40000, 25000, 30000, 150, 23000],
+                backgroundColor: ['#0d6efd', '#dc3545', '#ffc107', '#198754', '#6c757d']
+            }]
+        }
+    });
+</script>
+
+<!-- live statistic js -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const counters = document.querySelectorAll(".counter");
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute("data-target");
+                const count = +counter.innerText;
+                const increment = target / 100;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    });
+</script>
+
+<!-- Include Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Simulated Live Statistics Update
+        function updateStats() {
+            document.getElementById("total-investors").innerText = Math.floor(Math.random() * 5000) + "+";
+            document.getElementById("total-investments").innerText = "$" + (Math.floor(Math.random() * 10000000) + 1000000).toLocaleString() + "+";
+            document.getElementById("payouts-processed").innerText = "$" + (Math.floor(Math.random() * 5000000) + 500000).toLocaleString() + "+";
+        }
+        setInterval(updateStats, 5000);
+
+        // Market Chart Configuration
+        var ctx = document.getElementById("marketChart").getContext("2d");
+        var marketChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+                datasets: [{
+                    label: "Investment Growth ($)",
+                    data: [10000, 25000, 50000, 75000, 150000, 300000, 500000],
+                    borderColor: "#f1c40f",
+                    backgroundColor: "rgba(241, 196, 15, 0.2)",
+                    borderWidth: 2,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false } },
+                    y: { grid: { color: "#333" } }
+                }
+            }
+        });
+    });
+</script>
+
+<!-- btc live Market -->
+<script>
+    function updateBTCStats() {
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_market_cap=true&include_24hr_change=true")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("btc-price").innerText = `$${data.bitcoin.usd.toLocaleString()}`;
+                document.getElementById("btc-change").innerText = `${data.bitcoin.usd_24h_change.toFixed(2)}%`;
+                document.getElementById("btc-marketcap").innerText = `$${data.bitcoin.usd_market_cap.toLocaleString()}`;
+            })
+            .catch(error => console.error("Error fetching BTC data:", error));
+    }
+
+    // Refresh every 10 seconds
+    setInterval(updateBTCStats, 10000);
+
+    // Initial call
+    updateBTCStats();
+</script>
+
+
+<script>
+    document.getElementById("calcForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+  
+      let P = parseFloat(document.getElementById("initial").value);
+      let M = parseFloat(document.getElementById("monthly").value);
+      let r = parseFloat(document.getElementById("rate").value) / 100 / 12;
+      let n = parseFloat(document.getElementById("years").value) * 12;
+  
+      let futureValue;
+  
+      if (!isNaN(P) && !isNaN(M) && !isNaN(r) && !isNaN(n)) {
+        // Compound interest with monthly contribution
+        futureValue = P * Math.pow((1 + r), n) + M * ((Math.pow(1 + r, n) - 1) / r);
+        document.getElementById("resultText").innerText = `Estimated Future Value: $${futureValue.toFixed(2).toLocaleString()}`;
+      } else {
+        document.getElementById("resultText").innerText = "Please fill in all fields with valid numbers.";
+      }
+    });
+  </script>
+  
+  
+  <script>
+    document.getElementById("retireForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+  
+      let age = parseFloat(document.getElementById("currentAge").value);
+      let retireAge = parseFloat(document.getElementById("retirementAge").value);
+      let monthly = parseFloat(document.getElementById("monthlySave").value);
+      let rate = parseFloat(document.getElementById("retireRate").value) / 100 / 12;
+      let months = (retireAge - age) * 12;
+  
+      let total = 0;
+  
+      if (!isNaN(age) && !isNaN(retireAge) && !isNaN(monthly) && !isNaN(rate) && months > 0) {
+        total = monthly * ((Math.pow(1 + rate, months) - 1) / rate);
+        document.getElementById("retireResult").innerText = `Estimated Retirement Savings: $${total.toFixed(2).toLocaleString()}`;
+      } else {
+        document.getElementById("retireResult").innerText = "Please enter valid values.";
+      }
+    });
+  </script>
+  
+
+
+</body>
+</html>

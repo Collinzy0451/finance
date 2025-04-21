@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-controls="profileNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="profileNav">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/transactions">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/deposit">Deposit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/withdraw">Withdraw</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="row g-4">
+    <!-- Withdrawal Form -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
+        <h4 class="mb-3">Withdraw Funds</h4>
+        <form id="withdrawForm">
+          <!-- Withdrawal Amount -->
+          <div class="mb-3">
+            <label for="withdrawAmount" class="form-label">Amount ($)</label>
+            <input type="number" class="form-control" id="withdrawAmount" placeholder="Enter amount" required>
+          </div>
+    
+          <!-- Withdrawal Method -->
+          <div class="mb-3">
+            <label for="withdrawMethod" class="form-label">Method</label>
+            <select class="form-select" id="withdrawMethod" required>
+              <option selected disabled>Select Method</option>
+              <option value="bank">Bank Transfer</option>
+              <option value="cheque">Cheque Withdrawal</option>
+            </select>
+          </div>
+    
+          <!-- Cheque Fields (Hidden by Default) -->
+          <div id="chequeFields" style="display: none;">
+            <div class="mb-3">
+              <label for="chequeNumber" class="form-label">Cheque Holder's Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter cheque holder's name">
+            </div>
+            <div class="mb-3">
+              <label for="issuingBank" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="address">
+            </div>
+            <div class="mb-3">
+              <label for="issuingBank" class="form-label">Phone number</label>
+              <input type="text" class="form-control" id="phone number" placeholder="phoneNumber">
+            </div>
+            <div class="mb-3">
+              <label for="issuingBank" class="form-label">Zip Code</label>
+              <input type="text" class="form-control" id="zip code" placeholder="Zip Code">
+            </div>
+          </div>
+    
+          <!-- Default Withdrawal Account -->
+          <div class="mb-3">
+            <label class="form-label">Withdrawal Account</label>
+            <div class="border rounded p-2 mb-2">
+              <strong>0123456789</strong> – Bank Of America  
+            </div>
+            <button type="button" class="btn btn-link btn-sm" onclick="toggleAccountInput()">Change Bank Account</button>
+          </div>
+    
+          <!-- Change Account Input (Hidden by Default) -->
+          <div id="changeAccountFields" style="display: none;">
+            <div class="mb-2">
+              <input type="text" class="form-control" placeholder="New Account Number">
+            </div>
+            <div class="mb-2">
+              <input type="text" class="form-control" placeholder="New Bank Name">
+            </div>
+          </div>
+    
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary w-100 mt-2">Submit Withdrawal Request</button>
+        </form>
+      </div>
+    </div>
+    
+
+    <!-- Recent Withdrawals -->
+<div class="col-md-6">
+  <div class="card shadow-sm p-4">
+    <h4 class="mb-3">Recent Withdrawals</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Transaction ID</th>
+            <th>Date</th>
+            <th>Method</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WDL001</td>
+            <td>2025-04-12<br><small>09:00 AM</small></td>
+            <td>Bank Transfer</td>
+            <td>₦10,000</td>
+            <td><span class="badge bg-success">Successful</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Withdrawal to Bank of America</small>
+              </div>
+            </td>
+          </tr>
+         
+          <tr>
+            <td>WDL004</td>
+            <td>2025-04-14<br><small>06:25 PM</small></td>
+            <td>Bank Transfer</td>
+            <td>₦15,000</td>
+            <td><span class="badge bg-success">Successful</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Profit withdrawal from Investment Wallet</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>WDL005</td>
+            <td>2025-04-15<br><small>10:45 AM</small></td>
+            <td>Bank Transfer</td>
+            <td>₦12,500</td>
+            <td><span class="badge bg-success">Successful</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Transfer to Savings Account</small>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const methodSelect = document.getElementById('withdrawMethod');
+  const chequeFields = document.getElementById('chequeFields');
+  const changeFields = document.getElementById('changeAccountFields');
+
+  methodSelect.addEventListener('change', () => {
+    if (methodSelect.value === 'cheque') {
+      chequeFields.style.display = 'block';
+    } else {
+      chequeFields.style.display = 'none';
+    }
+  });
+
+  function toggleAccountInput() {
+    changeFields.style.display = changeFields.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+
+{% endblock %}

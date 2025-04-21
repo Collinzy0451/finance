@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-controls="profileNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="profileNav">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link " href="/">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/transactions">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/deposit">Deposit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/withdraw">Withdraw</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <h2 class="mb-4">Transaction History</h2>
+  
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Transaction ID</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tx in transactions %}
+        <tr>
+          <td>{{ tx.id }}</td>
+          <td>{{ tx.date }}</td>
+          <td>{{ tx.type }}</td>
+          <td>${{ tx.amount }}</td>
+          <td><span class="badge bg-success">{{ tx.status }}</span></td>
+          <td><button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#receiptModal{{ loop.index }}">View</button></td>
+        </tr>
+  
+        <!-- Modal Receipt -->
+        <div class="modal fade" id="receiptModal{{ loop.index }}" tabindex="-1" aria-labelledby="receiptLabel{{ loop.index }}" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="receiptLabel{{ loop.index }}">Transaction Receipt</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p><strong>Transaction ID:</strong> {{ tx.id }}</p>
+                <p><strong>Date:</strong> {{ tx.date }}</p>
+                <p><strong>Time:</strong> {{ tx.time }}</p>
+                <p><strong>Type:</strong> {{ tx.type }}</p>
+                <p><strong>Amount:</strong> ${{ tx.amount }}</p>
+                <p><strong>Status:</strong> {{ tx.status }}</p>
+                <p><strong>Description:</strong> {{ tx.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

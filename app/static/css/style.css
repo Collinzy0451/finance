@@ -1,0 +1,988 @@
+/* style.css */
+
+/* Base styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Card tweaks */
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar branding */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+/* Headings */
+h2, h5 {
+    color: #0d6efd;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+    .card-body h6 {
+        font-size: 0.9rem;
+    }
+
+    .card-body p {
+        font-size: 0.95rem;
+    }
+}
+
+#balanceAmount {
+    font-size: 2rem;
+}
+
+.nav-link {
+    font-weight: 500;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+
+/* style.css */
+
+body {
+    background-color: #f8f9fa; /* light gray */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-weight: 600;
+}
+
+/* ====== Account Balance Page Styles ====== */
+
+.card-header.bg-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.display-5 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.card-title {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.card-body p.text-muted {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* ====== Transaction History Page Styles ====== */
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+.table th {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.badge {
+    font-size: 0.85rem;
+    padding: 0.4em 0.6em;
+}
+
+.card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.list-group-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+form .btn {
+    font-weight: 600;
+}
+
+/* ====== deposits ====== */
+.card h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+form .btn {
+    font-weight: 600;
+}
+
+.list-group-item {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* ====== balance ====== */
+
+/* Balance page specific styles */
+.balance-summary {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.wallet-segment {
+    border-left: 4px solid #0d6efd;
+    padding: 1rem 1.5rem;
+    background-color: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    margin-bottom: 1.2rem;
+}
+
+.wallet-segment h5 {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #0d6efd;
+}
+
+.wallet-segment p {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+}
+
+.wallet-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.mini-statement-table {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.mini-statement-table th {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.mini-statement-table td,
+.mini-statement-table th {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+}
+
+.mini-statement-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* landing.css */
+
+header {
+    background: linear-gradient(to right, #0d6efd, #0a58ca);
+    color: white;
+    width: 100%;
+    border-radius: 0 0 20px 20px;
+  }
+  
+  header h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  header .btn {
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  
+  .navbar .dropdown-menu {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .navbar .dropdown-item {
+    padding: 0.5rem 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .navbar .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  section.container {
+    padding: 4rem 0;
+  }
+  
+  section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d6efd;
+  }
+  
+  section p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+  
+    section h3 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  
+/* General Reset & Base Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+  }
+  
+  h3, h5, h6 {
+    font-weight: 600;
+  }
+  
+  section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  /* Icons */
+  .bi {
+    font-size: 2.5rem;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #0d6efd, #023e8a);
+    color: white;
+    padding: 100px 0;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .hero-section p {
+    font-size: 1.25rem;
+  }
+  
+  /* Why Choose Us */
+  section .col-md-4 i {
+    margin-bottom: 15px;
+  }
+  
+  section h5 {
+    font-size: 1.25rem;
+  }
+  
+  /* Services Section */
+  section.bg-light img {
+    max-height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s;
+    border: 1px solid #ccc;
+  }
+  
+  section.bg-light img:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Cards */
+  .card {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Testimonials */
+  .card img.rounded-circle {
+    border: 3px solid #0d6efd;
+    margin-top: 10px;
+  }
+  
+  /* CTA Section */
+  .bg-primary {
+    background-color: #0d6efd !important;
+  }
+  
+  .btn-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+  
+  /* Utilities */
+  .text-primary {
+    color: #0d6efd !important;
+  }
+  
+  .text-success {
+    color: #198754 !important;
+  }
+  
+  .text-warning {
+    color: #ffc107 !important;
+  }
+  
+  .text-center p.lead {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  
+  /* Responsive Tweaks */
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 2.2rem;
+    }
+  
+    .hero-section p {
+      font-size: 1rem;
+    }
+  
+    .btn-lg {
+      font-size: 1rem;
+    }
+  }
+  
+  
+/* Live Statistics Section */
+.live-statistics {
+    padding: 80px 0;
+    background: #2c2f33; /* Dark theme to align with credibility */
+    color: #ffffff;
+    text-align: center;
+}
+
+.live-statistics .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.live-statistics .section-title p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Statistics Wrapper */
+.stats-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Statistic Boxes */
+.stat-box {
+    width: 220px;
+    padding: 20px;
+    background: #1e2124;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+}
+
+/* Statistic Icons */
+.stat-icon {
+    font-size: 40px;
+    color: #f1c40f;
+    margin-bottom: 10px;
+}
+
+/* Counter Numbers */
+.stat-box h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Statistic Description */
+.stat-box p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .stats-wrapper {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stat-box {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .stat-box {
+        width: 95%;
+    }
+}
+
+/* Market Statistics Section */
+.market-stats {
+    padding: 80px 0;
+    background: #222; /* Dark theme */
+    color: #ffffff;
+    text-align: center;
+}
+
+.market-stats .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #f1c40f;
+}
+
+.market-stats .section-title p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Statistics Box */
+.stats-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stats-box {
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.stats-box h3 {
+    font-size: 1.4rem;
+    color: #f1c40f;
+}
+
+.stats-box p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Chart Container */
+.chart-container {
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    margin: 40px auto;
+    background: #2c2c2c;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stats-box {
+        width: 90%;
+    }
+}
+
+.bitcoin-stats {
+    background: #1a1a1a; /* Dark background for professional look */
+    color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: #222; /* Dark gray for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 150px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box h3 {
+    font-size: 18px;
+    color: #ffcc00; /* Bitcoin’s yellow-orange theme */
+}
+
+.stat-box p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+
+/* Contact & Support Section */
+.contact-support {
+    padding: 80px 0;
+    background: #222; /* Dark background */
+    color: #ffffff;
+    text-align: center;
+}
+
+.contact-support .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.contact-support .section-title p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Contact Wrapper */
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Contact Form */
+.contact-form {
+    background: #2c2c2c;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.contact-form h3 {
+    font-size: 1.8rem;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background: #f1c40f;
+    color: #222;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #d4a00c;
+}
+
+/* Contact Details */
+.contact-details {
+    background: #2c2c2c;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.contact-details h3 {
+    font-size: 1.8rem;
+    color: #f1c40f;
+    margin-bottom: 20px;
+}
+
+.contact-details p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin: 10px 0;
+}
+
+.contact-details i {
+    color: #f1c40f;
+    margin-right: 10px;
+}
+
+/* Live Chat Button */
+.chat-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    background: #f1c40f;
+    color: #222;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.chat-button:hover {
+    background: #d4a00c;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .contact-wrapper {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-form, .contact-details {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form, .contact-details {
+        width: 100%;
+    }
+}
+
+/* Security & Compliance Section */
+.security-compliance {
+    padding: 80px 0;
+    background: #1e1e1e; /* Dark and secure-feeling theme */
+    color: #ffffff;
+    text-align: center;
+}
+
+.security-compliance .section-title h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.security-compliance .section-title p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 40px;
+}
+
+/* Security Wrapper */
+.security-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Security Items */
+.security-item {
+    width: 300px;
+    padding: 20px;
+    background: #2c2c2c;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.security-item:hover {
+    transform: scale(1.05);
+}
+
+/* Security Icons */
+.security-item i {
+    font-size: 40px;
+    color: #f1c40f;
+    margin-bottom: 10px;
+}
+
+/* Security Titles */
+.security-item h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Security Descriptions */
+.security-item p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+/* Trusted Partners */
+.trusted-partners {
+    margin-top: 50px;
+}
+
+.trusted-partners h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.partners-logos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.partners-logos img {
+    width: 100px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.partners-logos img:hover {
+    filter: grayscale(0%);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .security-wrapper {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+@media (max-width: 768px) {
+    .security-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .security-item {
+        width: 80%;
+    }
+
+    .partners-logos img {
+        width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .security-item {
+        width: 95%;
+    }
+
+    .partners-logos img {
+        width: 70px;
+    }
+}
+
+.footer {
+    background-color: #0d1b2a;
+    color: #fff;
+    padding: 60px 20px 20px;
+    font-size: 15px;
+  }
+  
+  .footer .container {
+    max-width: 1140px;
+    margin: auto;
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  
+  .footer-logo h3 {
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-logo p {
+    color: #ccc;
+    max-width: 250px;
+  }
+  
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-links ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-links ul li a:hover {
+    color: #fff;
+  }
+  
+  .footer-contact p {
+    margin: 6px 0;
+    color: #ccc;
+  }
+  
+  .social-icons a {
+    margin-right: 12px;
+    color: #ccc;
+    font-size: 16px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #fff;
+  }
+  
+  footer hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    margin: 20px 0;
+  }
+  
+  footer .copyright {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+  }
+  
+  /* Responsive Layout */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+      align-items: center;
+    }
+  
+    .footer-logo p {
+      max-width: 100%;
+    }
+  
+    .footer-links ul {
+      padding-left: 0;
+    }
+  
+    .footer-links ul li {
+      display: inline-block;
+      margin: 0 8px 10px;
+    }
+  
+    .footer-contact p {
+      margin: 4px 0;
+    }
+  
+    .social-icons {
+      margin-top: 10px;
+    }
+  }
+  
+    /* dashboard b/c 3 */
+    .card-body p {
+        margin: 0;
+        font-size: 0.9rem;
+      }
+      
