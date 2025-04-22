@@ -25,19 +25,19 @@
       <div class="collapse navbar-collapse" id="profileNav">
         <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="{{url_for('dashboard') }}">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="/profile">Profile</a>
+            <a class="nav-link " href="{{url_for('profile') }}">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/transactions">Transactions</a>
+            <a class="nav-link" href="{{url_for('transactions') }}">Transactions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/deposit">Deposit</a>
+            <a class="nav-link active" href="{{url_for('deposit') }}">Deposit</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/withdraw">Withdraw</a>
+            <a class="nav-link" href="{{url_for('withdraw') }}">Withdraw</a>
           </li>
         </ul>
       </div>
@@ -52,7 +52,7 @@
         <form id="depositForm">
           <!-- Amount -->
           <div class="mb-3">
-            <label for="depositAmount" class="form-label">Amount (₦)</label>
+            <label for="depositAmount" class="form-label">Amount ($)</label>
             <input type="number" class="form-control" id="depositAmount" placeholder="Enter amount" required>
           </div>
     
@@ -100,11 +100,11 @@
   <label class="form-label">Select Coin</label>
   <div class="d-flex gap-3 mb-3">
     <div class="crypto-option text-center" onclick="selectCoin('btc')" id="btcOption">
-      <img src="../static/image/btc.png" width="40" alt="BTC">
+      <img src="{{ url_for('static', filename='image/btc.png') }}" width="40" alt="BTC">
       <p class="large mb-0">BTC</p>
     </div>
     <div class="crypto-option text-center" onclick="selectCoin('eth')" id="ethOption">
-      <img src="../static/image/eth.webp" width="40" alt="ETH">
+      <img src="{{ url_for('static', filename='image/eth.webp') }}" width="40" alt="ETH">
       <p class="large mb-0">ETH</p>
     </div>
   </div>
@@ -154,8 +154,8 @@
           <tr>
             <td>DPT002</td>
             <td>2025-04-11<br><small>10:15 AM</small></td>
-            <td>Bank Transfer</td>
-            <td>₦50,000</td>
+            <td>Card Deposit</td>
+            <td>$200</td>
             <td><span class="badge bg-success">Credited</span></td>
             <td>
               <div>
@@ -168,8 +168,8 @@
           <tr>
             <td>DPT004</td>
             <td>2025-04-12<br><small>04:00 PM</small></td>
-            <td>Bank Transfer</td>
-            <td>₦75,000</td>
+            <td>Crypto Deposit</td>
+            <td>$200</td>
             <td><span class="badge bg-success">Credited</span></td>
             <td>
               <div>
@@ -181,8 +181,8 @@
           <tr>
             <td>DPT005</td>
             <td>2025-04-13<br><small>07:20 AM</small></td>
-            <td>Mobile App</td>
-            <td>₦120,000</td>
+            <td>Crypto deposit</td>
+            <td>₦230</td>
             <td><span class="badge bg-success">Credited</span></td>
             <td>
               <div>

@@ -9,11 +9,11 @@
     </button>
     <div class="collapse navbar-collapse" id="profileNav">
       <ul class="navbar-nav nav nav-pills w-100 justify-content-between flex-md-row">
-        <li class="nav-item"><a class="nav-link" href="/">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link active" href="/profile">Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="/transactions">Transactions</a></li>
-        <li class="nav-item"><a class="nav-link" href="/deposit">Deposit</a></li>
-        <li class="nav-item"><a class="nav-link" href="/withdraw">Withdraw</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('dashboard') }}">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link active" href="{{url_for('profile') }}">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('transactions') }}">Transactions</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('deposit') }}">Deposit</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for('withdraw') }}">Withdraw</a></li>
       </ul>
     </div>
   </div>
@@ -27,7 +27,7 @@
     <div class="col-lg-4 mb-4">
       <div class="card text-center shadow-sm">
         <div class="card-body">
-          <img src="../static/image/team1.jpg" class="rounded-circle img-fluid mb-3" style="width: 120px;" alt="User">
+          <img src="{{url_for('static', filename='image/team1.jpg')}}" class="rounded-circle img-fluid mb-3" style="width: 120px;" alt="User">
           <h4 class="card-title mb-0">Kelvin Butschaer</h4>
           <p class="text-muted">Account Holder</p>
         </div>
@@ -49,7 +49,7 @@
           <div class="card shadow-sm mb-4">
             <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
               <span><i class="bi bi-person-badge me-2"></i>Profile Overview</span>
-              <a href="/settings" class="text-white text-decoration-none"><i class="bi bi-gear me-1"></i> Settings</a>
+              <a href="{{url_for ('settings' )}}" class="text-white text-decoration-none"><i class="bi bi-gear me-1"></i> Settings</a>
             </div>
             <div class="card-body">
               <div class="row mb-3">
@@ -67,6 +67,13 @@
               <div class="row mb-3">
                 <div class="col-sm-4"><strong>Email</strong></div>
                 <div class="col-sm-8">kevscill@yahoo.com</div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-4"><strong>SSN</strong></div>
+                <div class="col-sm-8 d-flex align-items-center">
+                  <span id="ssn-value">214******17</span>
+                  <i class="fas fa-eye ms-2" id="toggle-ssn" style="cursor:pointer;" title="Show SSN"></i>
+                </div>
               </div>
               <div class="row mb-3">
                 <div class="col-sm-4"><strong>Phone</strong></div>
@@ -127,5 +134,24 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  const fullSSN = "2146678917"; // Replace with actual full SSN
+  const maskedSSN = "214******17";
+
+  const ssnSpan = document.getElementById("ssn-value");
+  const toggleBtn = document.getElementById("toggle-ssn");
+
+  let isRevealed = false;
+
+  toggleBtn.addEventListener("click", () => {
+    isRevealed = !isRevealed;
+    ssnSpan.textContent = isRevealed ? fullSSN : maskedSSN;
+    toggleBtn.classList.toggle("fa-eye");
+    toggleBtn.classList.toggle("fa-eye-slash");
+    toggleBtn.title = isRevealed ? "Hide SSN" : "Show SSN";
+  });
+</script>
 
 {% endblock %}

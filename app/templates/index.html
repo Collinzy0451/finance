@@ -4,7 +4,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="/">SmartFinance</a>
+    <a class="navbar-brand fw-bold" href="/">NexAsset</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,11 +18,11 @@
             Accounts & Trade
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
-            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/transactions">Transactions</a></li>
-            <li><a class="dropdown-item" href="/stocks">Stock Portfolio</a></li>
-            <li><a class="dropdown-item" href="/dashboard">Forex Watch</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{{url_for('profile') }}">Profile</a></li>
+            <li><a class="dropdown-item" href="{{url_for('transactions') }}">Transactions</a></li>
+            <li><a class="dropdown-item" href="{{url_for('stocks') }}">Stock Portfolio</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}">Forex Watch</a></li>
           </ul>
         </li>
 
@@ -32,9 +32,9 @@
             Planning & Advice
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#tools-calculators">Budgeting Tools</a></li>
-            <li><a class="dropdown-item" href="#tools-calculators">Investment Planning</a></li>
-            <li><a class="dropdown-item" href="#tools_calculators">Retirement Advice</a></li>
+            <li><a class="dropdown-item" href="{{url_for('home') }}#tools-calculators">Budgeting Tools</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}#tools-calculators">Investment Planning</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}#tools-calculators">Retirement Advice</a></li>
           </ul>
         </li>
 
@@ -44,10 +44,10 @@
             Products
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/deposit">Deposit</a></li>
-            <li><a class="dropdown-item" href="/withdraw">Withdraw</a></li>
-            <li><a class="dropdown-item" href="/dashboard">Savings Wallet</a></li>
-            <li><a class="dropdown-item" href="/dashboard">Investment Wallet</a></li>
+            <li><a class="dropdown-item" href="{{url_for('deposit') }}">Deposit</a></li>
+            <li><a class="dropdown-item" href="{{url_for('withdraw') }}">Withdraw</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}">Savings Wallet</a></li>
+            <li><a class="dropdown-item" href="{{url_for('dashboard') }}">Investment Wallet</a></li>
           </ul>
         </li>
 
@@ -57,9 +57,9 @@
             Why Us
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#security-compliance">Security</a></li>
-            <li><a class="dropdown-item" href="#testimonials">Testimonials</a></li>
-            <li><a class="dropdown-item" href="#why-choose-us">Our Mission</a></li>
+            <li><a class="dropdown-item" href="{{url_for('home') }}#security-compliance">Security</a></li>
+            <li><a class="dropdown-item" href="{{url_for('home') }}#testimonials">Testimonials</a></li>
+            <li><a class="dropdown-item" href="{{url_for('home') }}#why-choose-us">Our Mission</a></li>
           </ul>
         </li>
 
@@ -69,9 +69,9 @@
 </nav>
 
 <header class="bg-primary text-white text-center p-5">
-  <h1>Welcome to <span style="color: rgb(248, 187, 19);">SmartFinance.</span> A Smarter Way to Manage Your Finance</h1>
-  <p class="lead">Secure Banking, Strategic Investing & Seamless Planning.</p>
-  <a href="/dashboard" class="btn btn-light btn-lg mt-3">Go to Dashboard</a>
+  <h1>Level Up with <span style="color: rgb(248, 187, 19);">NexAsset.</span> No Limits, No Debt</h1>
+  <p class="lead">Plan, Protect, and Profit — without the Sweat.
+  <a href="{{url_for('dashboard') }}" class="btn btn-light btn-lg mt-3">Go to Dashboard</a>
 </header>
 
 
@@ -104,22 +104,22 @@
     <h3 class="text-center mb-4">What You Can Do</h3>
     <div class="row g-4 text-center">
       <div class="col-md-3">
-        <img src="../static/image/pic1.jpg" class="img-fluid rounded mb-2" alt="Investment">
+        <img src="{{url_for('static', filename='image/pic1.jpg') }}" class="img-fluid rounded mb-2" alt="Investment">
         <h6>Invest Smart</h6>
         <p>Start investing in local & global markets with flexible portfolios.</p>
       </div>
       <div class="col-md-3">
-        <img src="../static/image/pic2.jpg" class="img-fluid rounded mb-2" alt="Save Smart">
+        <img src="{{url_for('static', filename='image/pic2.jpg') }}" class="img-fluid rounded mb-2" alt="Save Smart">
         <h6>Save Efficiently</h6>
         <p>Automated savings plans to help you reach your goals faster.</p>
       </div>
       <div class="col-md-3">
-        <img src="../static/image/pic3.jpg" class="img-fluid rounded mb-2" alt="Advice">
+        <img src="{{url_for('static', filename='image/pic3.jpg') }}" class="img-fluid rounded mb-2" alt="Advice">
         <h6>Plan Ahead</h6>
         <p>Financial planning tools for retirement, emergency, and legacy.</p>
       </div>
       <div class="col-md-3">
-        <img src="../static/image/pic4.jpeg" class="img-fluid rounded mb-2" alt="Forex">
+        <img src="{{url_for('static', filename='image/pic4.jpeg') }}" class="img-fluid rounded mb-2" alt="Forex">
         <h6>Trade Forex</h6>
         <p>Access live FX rates and trade confidently with our tools.</p>
       </div>
@@ -272,21 +272,21 @@
   <div class="row g-4 mt-4">
     <div class="col-md-4">
       <div class="card border-0 shadow-sm text-center p-3 h-100">
-        <img src="../static/image/tes1.webp" class="rounded-circle mb-3" width="80" alt="User 1">
+        <img src="{{url_for('static', filename='image/tes1.webp') }}" class="rounded-circle mb-3" width="80" alt="User 1">
         <p>"This platform changed the way I save and invest. Super easy to use!"</p>
         <h6 class="text-primary">- Sarah M.</h6>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card border-0 shadow-sm text-center p-3 h-100">
-        <img src="../static/image/tes2.jpg" class="rounded-circle mb-3" width="80" alt="User 2">
+        <img src="{{url_for('static', filename='image/tes2.jpg') }}" class="rounded-circle mb-3" width="80" alt="User 2">
         <p>"The advisors helped me build my first real investment portfolio."</p>
         <h6 class="text-primary">- David O.</h6>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card border-0 shadow-sm text-center p-3 h-100">
-        <img src="../static/image/tes3.png" class="rounded-circle mb-3" width="80" alt="User 3">
+        <img src="{{url_for('static', filename='image/tes3.png') }}" class="rounded-circle mb-3" width="80" alt="User 3">
         <p>"Forex trading has never been this clean and straightforward."</p>
         <h6 class="text-primary">- Mark K.</h6>
       </div>
@@ -325,10 +325,10 @@
       <div class="trusted-partners">
       <h3>Trusted Partners</h3>
       <div class="partners-logos">
-          <img src="../static/image/appl.png" alt="Apple">
-          <img src="../static/image/binance.avif" alt="Binance">
-          <img src="../static/image/visa.webp" alt="Visa">
-          <img src="../static/image/mastercard.png" alt="Mastercard">
+          <img src="{{url_for('static', filename='image/appl.png') }}" alt="Apple">
+          <img src="{{url_for('static', filename='image/binance.avif') }}" alt="Binance">
+          <img src="{{url_for('static', filename='image/visa.webp') }}" alt="Visa">
+          <img src="{{url_for('static', filename='image/mastercard.png') }}" alt="Mastercard">
       </div>
   </div>
   </div>
