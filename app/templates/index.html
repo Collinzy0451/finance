@@ -4,13 +4,15 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="/">NexAsset</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+    <a class="navbar-brand" href="{{ url_for('home') }}">
+      <img src="{{ url_for('static', filename='image/assetra.png') }}" alt="Assetra Logo" style="max-height: 40px;">
+    </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="mainNavbar">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto m b-2 mb-lg-0">
 
         <!-- Accounts & Trade -->
         <li class="nav-item dropdown">
@@ -69,8 +71,8 @@
 </nav>
 
 <header class="bg-primary text-white text-center p-5">
-  <h1>Level Up with <span style="color: rgb(248, 187, 19);">NexAsset.</span> No Limits, No Debt</h1>
-  <p class="lead">Plan, Protect, and Profit — without the Sweat.
+  <h1>Unluck Growth With <span style="color: rgb(248, 187, 19);">Assetra.</span> No Limits, No Debt</h1>
+  <p class="lead">Plan, Protect, and Profit — without the Sweat.</p>
   <a href="{{url_for('dashboard') }}" class="btn btn-light btn-lg mt-3">Go to Dashboard</a>
 </header>
 
@@ -357,7 +359,7 @@
           <!-- Contact Details -->
           <div class="contact-details">
               <h3>Contact Information</h3>
-              <p><i class="fas fa-envelope"></i> support@saki.com</p>
+              <p><i class="fas fa-envelope"></i> support@connectedassests.com</p>
               <p><i class="fas fa-phone"></i> +123 456 7890</p>
               <p><i class="fas fa-map-marker-alt"></i> 123 Investment Street, New York, USA</p>
 
@@ -445,9 +447,10 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-logo">
-        <h3>SmartFinance</h3>
-        <p>Secure. Smart. Strategic.</p>
+        <img src="{{ url_for('static', filename='image/assetra.png') }}" alt="Assetra Logo" style="max-width: 180px; height: auto;">
+        <p class="mt-2">Secure. Smart. Strategic.</p>
       </div>
+      
 
       <div class="footer-links">
         <h4>Quick Links</h4>
@@ -461,8 +464,8 @@
 
       <div class="footer-contact">
         <h4>Contact Us</h4>
-        <p>Email: support@smartFinance.com</p>
-        <p>Phone: +234 812 345 6789</p>
+        <p>Email: support@connectedassests.com</p>
+        <p>Phone: +224 812 345 6789</p>
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-twitter"></i></a>
@@ -470,8 +473,32 @@
         </div>
       </div>
     </div>
+    <div class="footer-policies mt-4" style="color: black;">
+      <button class="btn btn-link text-decoration-none" data-bs-toggle="collapse" data-bs-target="#termsCollapse">
+        Terms & Conditions
+      </button>
+      <div class="collapse" id="termsCollapse">
+        <div class="card card-body bg-light border-0 mt-2">
+          <p>
+            By using Assetra, you agree to use the platform responsibly and understand that investing involves risk. We don’t guarantee profits, and you’re responsible for your own investment choices. You must be 18 or older to join. Your login details should be kept safe, and any misuse of the platform can lead to account suspension. Assetra owns all content and features on the site, and copying or tampering is not allowed. We may change or remove services at any time. If you have questions or issues, contact us at support@connectedassests.com.com.
+          </p>
+        </div>
+      </div>
+    
+      <button class="btn btn-link text-decoration-none" data-bs-toggle="collapse" data-bs-target="#privacyCollapse">
+        Privacy Policy
+      </button>
+      <div class="collapse" id="privacyCollapse">
+        <div class="card card-body bg-light border-0 mt-2">
+          <p>
+            At Assetra, we care about your privacy. We collect basic information like your name, contact details, and how you use our platform to offer you a better experience. We use this data to manage your account, process transactions, and keep things secure. Your information is safe with us—we don’t sell it, and we only share it when necessary (like with trusted service providers or if required by law). We use cookies to personalize your experience and help the site work smoothly. You can access, update, or request removal of your data anytime. Assetra is for adults (18+) only, and we may update this policy from time to time.
+          </p>
+        </div>
+      </div>
+    </div>
+    
     <hr>
-    <p class="copyright">&copy; 2025 SmartFinance. All rights reserved.</p>
+    <p class="copyright">&copy; 2025 Assetra. All rights reserved.</p>
   </div>
 </footer>
 
