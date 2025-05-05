@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-controls="profileNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="profileNav">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('dashboard2') }}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('profile2') }}">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('transactions2') }}">Transactions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('deposit2') }}">Deposit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('withdraw2') }}">Withdraw</a>
+        </li>
+      </ul>
+    </div>
+
+     <!-- Top Right Icons -->
+     <div class="d-flex align-items-center ms-auto">
+        <!-- <a href="#" class="me-3 position-relative text-dark">
+          <i class="bi bi-bell fs-5"></i>
+          <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+        </a> -->
+        <a href="{{url_for('profile') }}">
+          <img src="{{url_for('static', filename='image/cz1.jpg') }}" alt="Profile" class="rounded-circle" style="width: 32px; height: 32px; object-fit: cover;">
+        </a>
+      </div>
+  </div>
+
+   
+  
+   
+  
+</nav>
+
+<div class="card shadow-sm mb-4 text-center p-4">
+  <h5 class="text-muted">Total Balance</h5>
+  <h2 class="fw-bold">
+    <span id="balanceAmount">$0.00</span>
+    <i class="bi bi-eye-slash" id="toggleBalance" style="cursor: pointer;"></i>
+  </h2>
+</div>
+
+<!-- <div class="row mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Account Balance</h6>
+          <h4 class="fw-bold">$0.00</h4>
+          <p class="text-success">↑ +0.00% Profit</p>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Investment Balance</h6>
+          <h4 class="fw-bold">$0.00</h4>
+          <p class="text-success">↑ +0% Profit</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm text-center">
+        <div class="card-body">
+          <h6 class="text-muted">Savings Balance</h6>
+          <h4 class="fw-bold">$0.00</h4>
+          <p class="text-danger">↓ +0% Profit</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card p-4 mb-4 shadow-sm">
+    <h5>Your Investment Plan: <strong>None</strong></h5>
+    <p>Current Investment: $0.00</p>
+    <p>Start an investment plan of your choice</p>
+    
+    <div class="progress mb-2" style="height: 20px;">
+      <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        0%
+      </div>
+    </div>
+  </div>
+  
+
+<div class="row g-4 mb-4">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Spending Overview</h5>
+        <canvas id="spendingChart" height="150"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card text-white bg-primary">
+      <div class="card-body">
+        <h6>USD/EUR</h6>
+        <p>0.86 <span class="text-success">+0.72%</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-secondary">
+      <div class="card-body">
+        <h6>EUR/GBP</h6>
+        <p>0.87 <span class="text-danger">-0.15%</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card text-white bg-success">
+      <div class="card-body">
+        <h6>GBP/JPY</h6>
+        <p>163.45 <span class="text-success">+0.52%</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4" id="forex">
+  <div class="card-body">
+    <h5 class="card-title">Your Forex Watchlist</h5>
+    <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between">
+        <span class="badge bg-info">Watching</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
+       <span class="badge bg-warning text-dark">Trade Alert</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Forex Line Chart -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <canvas id="forexChart" height="100"></canvas>
+  </div>
+</div>
+
+<!-- Stock Market Snapshot -->
+<div class="card shadow-sm mb-4">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="card-title">📈 Stock Market Snapshot</h5>
+      <a href="{{ url_for('stocks') }}" class="btn btn-sm btn-outline-primary">View Full Portfolio →</a>
+    </div>
+
+    <div class="table-responsive mb-3">
+      <table class="table table-sm table-bordered align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Stock</th>
+            <th>Qty</th>
+            <th>Price ($)</th>
+            <th>Value ($)</th>
+            <th>P/L</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Apple (AAPL)</td>
+            <td>20</td>
+            <td>185.00</td>
+            <td>$3,700.00</td>
+            <td class="text-success">+$240.00</td>
+          </tr>
+          <tr>
+            <td>Tesla (TSLA)</td>
+            <td>10</td>
+            <td>750.00</td>
+            <td>$7,500.00</td>
+            <td class="text-danger">−$150.00</td>
+          </tr>
+          <tr>
+            <td>Microsoft (MSFT)</td>
+            <td>15</td>
+            <td>310.50</td>
+            <td>$4,657.50</td>
+            <td class="text-success">+$320.50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+    <div>
+      <canvas id="stockMiniChart" height="100"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="card p-4 mb-4 shadow-sm">
+  <h5 class="mb-3">🎯 Boost Your Earnings</h5>
+  <p>Complete a quick task to earn extra profit. Today's task: Watch a short video.</p>
+
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <span>Task: <strong>Watch YouTube Video</strong></span>
+    <span class="badge bg-success">+$50</span>
+  </div>
+
+  <a href="https://youtube.com/shorts/HVQ3vZS-u0M?si=xpkKgM_RgeEa1vD7" target="_blank" class="btn btn-outline-primary w-100 mb-2" id="watchTaskBtn">
+    Watch Now
+  </a>
+
+  <div id="taskCompletedMessage" class="alert alert-success mt-3 d-none">
+    ✅ Task Completed! $50 will be added to your balance.
+  </div>
+</div>
+
+
+<!-- Chart.js (only once) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // Spending Overview Chart (you can change this to pie/doughnut if needed)
+  const spendingCtx = document.getElementById('spendingChart').getContext('2d');
+  new Chart(spendingCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Deposit', 'Stocks', 'Profits', 'Losses', 'Savings'],
+      datasets: [{
+        data: [40000, 25000, 30000, 150, 23000],
+        backgroundColor: ['#0d6efd', '#dc3545', '#ffc107', '#198754' , '#6c757d'],
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+
+  // Mini Stock Chart (US Version)
+const miniCtx = document.getElementById('stockMiniChart').getContext('2d');
+new Chart(miniCtx, {
+  type: 'bar',
+  data: {
+    labels: ['AAPL', 'TSLA', 'MSFT'],
+    datasets: [{
+      label: 'Portfolio Value ($)',
+      data: [3700, 7500, 4657.5],
+      backgroundColor: ['#0d6efd', '#dc3545', '#198754']
+    }]
+  },
+  options: {
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: value => `$${value.toLocaleString()}`
+        }
+      }
+    }
+  }
+});
+
+
+  // Forex USD/EUR Line Chart
+const forexCtx = document.getElementById('forexChart').getContext('2d');
+new Chart(forexCtx, {
+  type: 'line',
+  data: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+    datasets: [{
+      label: 'USD/EUR',
+      data: [0.92, 0.915, 0.917, 0.919, 0.918], // realistic USD/EUR exchange rates
+      borderColor: '#0d6efd',
+      fill: false,
+      tension: 0.4
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: false
+      }
+    }
+  }
+});
+
+</script>
+
+<script>
+  const watchBtn = document.getElementById('watchTaskBtn');
+  const taskMessage = document.getElementById('taskCompletedMessage');
+
+  watchBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      taskMessage.classList.remove('d-none');
+      // Optional: Simulate updating balance
+      console.log("₦500 profit simulated.");
+    }, 3000); // Simulate delay after clicking
+  });
+</script>
+
+{% endblock %}

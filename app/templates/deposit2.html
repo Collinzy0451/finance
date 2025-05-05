@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  .crypto-option {
+    border: 2px solid transparent;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .crypto-option.active {
+    border-color: #0d6efd;
+    background-color: #e9f2ff;
+  }
+</style>
+
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 rounded shadow-sm">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#profileNav" aria-controls="profileNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="profileNav">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 nav nav-pills flex-column flex-md-row w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('dashboard2') }}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{{url_for('profile2') }}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('transactions2') }}">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{url_for('deposit2') }}">Deposit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('withdraw2') }}">Withdraw</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="row g-4">
+    <!-- Deposit Form -->
+    <div class="col-md-6">
+      <div class="card shadow-sm p-4">
+        <h4 class="mb-3">Make a Deposit</h4>
+        <form id="depositForm">
+          <!-- Amount -->
+          <div class="mb-3">
+            <label for="depositAmount" class="form-label">Amount ($)</label>
+            <input type="number" class="form-control" id="depositAmount" placeholder="Enter amount" required>
+          </div>
+    
+          <!-- Method -->
+          <div class="mb-3">
+            <label for="depositMethod" class="form-label">Method</label>
+            <select class="form-select" id="depositMethod" required>
+              <option selected disabled>Select Method</option>
+              <option value="card">Debit/Credit Card</option>
+              <option value="crypto">Cryptocurrency</option>
+            </select>
+          </div>
+    
+         <!-- Card Payment Simulation -->
+<div id="cardFields" style="display: none;">
+  <p class="text-muted small">Enter your debit/credit card details to simulate a payment.</p>
+  
+  <div class="mb-3">
+    <label for="cardNumber" class="form-label">Card Number</label>
+    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <label for="cardExpiry" class="form-label">Expiry Date</label>
+      <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+    </div>
+    <div class="col">
+      <label for="cardCVV" class="form-label">CVV</label>
+      <input type="text" class="form-control" id="cardCVV" placeholder="123" maxlength="3">
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="cardPIN" class="form-label">Card PIN</label>
+    <input type="password" class="form-control" id="cardPIN" placeholder="****" maxlength="4">
+  </div>
+
+  <button type="submit" class="btn btn-primary w-100">Submit Payment</button>
+</div>
+
+    
+<!-- Crypto Fields -->
+<div id="cryptoFields" style="display: none;">
+  <label class="form-label">Select Coin</label>
+  <div class="d-flex gap-3 mb-3">
+    <div class="crypto-option text-center" onclick="selectCoin('btc')" id="btcOption">
+      <img src="{{ url_for('static', filename='image/btc.png') }}" width="40" alt="BTC">
+      <p class="large mb-0">BTC</p>
+    </div>
+    <div class="crypto-option text-center" onclick="selectCoin('eth')" id="ethOption">
+      <img src="{{ url_for('static', filename='image/eth.webp') }}" width="40" alt="ETH">
+      <p class="large mb-0">ETH</p>
+    </div>
+  </div>
+
+  <div class="mb-3 position-relative">
+    <label for="walletAddress" class="form-label">Wallet Address</label>
+    <div class="input-group">
+      <input type="text" readonly class="form-control" id="walletAddress" value="345678906789">
+      <button class="btn btn-outline-secondary" type="button" id="copyBtn" onclick="copyWalletAddress()">Copy</button>
+    </div>
+    <small id="copyStatus" class="text-success mt-1" style="display: none;">Copied!</small>
+  </div>
+  
+
+  <div class="text-center">
+    <img id="qrCode" src="" alt="QR Code" style="display: none;">
+    <p class="small text-muted mt-2" id="scanNote" style="display: none;">Scan to pay</p>
+  </div>
+</div>
+
+    
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-success w-100 mt-3">Submit Deposit</button>
+        </form>
+      </div>
+    </div>
+    
+
+    <!-- Recent Deposits -->
+<div class="col-md-6">
+  <div class="card shadow-sm p-4">
+    <h4 class="mb-3">Recent Deposits</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Transaction ID</th>
+            <th>Date</th>
+            <th>Method</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <!-- <tbody>
+         
+          <tr>
+            <td>DPT002</td>
+            <td>2025-04-11<br><small>10:15 AM</small></td>
+            <td>Card Deposit</td>
+            <td>$200</td>
+            <td><span class="badge bg-success">Credited</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Transfer from John Doe</small>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>DPT004</td>
+            <td>2025-04-12<br><small>04:00 PM</small></td>
+            <td>Crypto Deposit</td>
+            <td>$200</td>
+            <td><span class="badge bg-success">Credited</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Investment wallet top-up</small>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>DPT005</td>
+            <td>2025-04-13<br><small>07:20 AM</small></td>
+            <td>Crypto deposit</td>
+            <td>₦230</td>
+            <td><span class="badge bg-success">Credited</span></td>
+            <td>
+              <div>
+                <strong>Description:</strong><br>
+                <small>Deposit into savings wallet</small>
+              </div>
+            </td>
+          </tr>
+        </tbody> -->
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const methodSelect = document.getElementById('depositMethod');
+  const cardFields = document.getElementById('cardFields');
+  const cryptoFields = document.getElementById('cryptoFields');
+
+  methodSelect.addEventListener('change', () => {
+    cardFields.style.display = methodSelect.value === 'card' ? 'block' : 'none';
+    cryptoFields.style.display = methodSelect.value === 'crypto' ? 'block' : 'none';
+  });
+</script>
+
+<script>
+  const coinData = {
+    btc: {
+      address: "bc331qxyz...btc123",
+      qr: "https://api.qrserver.com/v1/create-qr-code/?data=bc1qxyz...btc123&size=150x150"
+    },
+    eth: {
+      address: "0x33abc123...eth456",
+      qr: "https://api.qrserver.com/v1/create-qr-code/?data=0xabc123...eth456&size=150x150"
+    }
+  };
+
+  function selectCoin(coin) {
+    // Update wallet address and QR code
+    document.getElementById('walletAddress').value = coinData[coin].address;
+    document.getElementById('qrCode').src = coinData[coin].qr;
+    document.getElementById('qrCode').style.display = 'block';
+    document.getElementById('scanNote').style.display = 'block';
+
+    // Highlight selected coin
+    document.getElementById('btcOption').classList.remove('active');
+    document.getElementById('ethOption').classList.remove('active');
+    document.getElementById(coin + 'Option').classList.add('active');
+  }
+</script>
+
+<script>
+  function copyWalletAddress() {
+    const walletInput = document.getElementById('walletAddress');
+    const copyStatus = document.getElementById('copyStatus');
+
+    // Select and copy the address
+    walletInput.select();
+    walletInput.setSelectionRange(0, 99999); // For mobile compatibility
+    document.execCommand('copy');
+
+    // Show copied feedback
+    copyStatus.style.display = 'inline';
+    setTimeout(() => {
+      copyStatus.style.display = 'none';
+    }, 1500);
+  }
+</script>
+
+
+{% endblock %}

@@ -18,12 +18,22 @@ def login():
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
+
         if email == "master123@yahoo.com" and password == "master456":
             session['logged_in'] = True
-            return redirect("/dashboard")  # or /profile or landing page
+            session['user'] = 'main'
+            return redirect("/dashboard")
+
+        elif email == "mohkalqaddi1987@gmail.com" and password == "master456":
+            session['logged_in'] = True
+            session['user'] = 'alt'
+            return redirect("/dashboard2")
+
         else:
             error = "Invalid email or password"
+
     return render_template("login.html", error=error)
+
 
 
 #  register page
@@ -181,6 +191,39 @@ def settings():
 @app.route('/stocks')
 def stocks():
     return render_template('stocks.html')
+
+
+# Alt routes
+@app.route("/dashboard2")
+def dashboard2():
+    if not session.get('logged_in') or session.get('user') != 'alt':
+        return redirect(url_for('login'))
+    return render_template("dashboard2.html")
+
+@app.route("/profile2")
+def profile2():
+    if not session.get('logged_in') or session.get('user') != 'alt':
+        return redirect(url_for('login'))
+    return render_template("profile2.html")
+
+@app.route("/withdraw2")
+def withdraw2():
+    if not session.get('logged_in') or session.get('user') != 'alt':
+        return redirect(url_for('login'))
+    return render_template("withdraw2.html")
+
+@app.route("/deposit2")
+def deposit2():
+    if not session.get('logged_in') or session.get('user') != 'alt':
+        return redirect(url_for('login'))
+    return render_template("deposit2.html")
+
+@app.route("/transactions2")
+def transactions2():
+    if not session.get('logged_in') or session.get('user') != 'alt':
+        return redirect(url_for('login'))
+    return render_template("transactions2.html")
+ 
 
 
 
