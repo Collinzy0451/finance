@@ -19,7 +19,7 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        if email == "master123@yahoo.com" and password == "master456":
+        if email == "tomtracy1@gmail.com" and password == "Thomcy1000@":
             session['logged_in'] = True
             session['user'] = 'main'
             return redirect("/dashboard")
