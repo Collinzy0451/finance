@@ -39,10 +39,10 @@
     let visible = true;
     toggleBtn.addEventListener('click', () => {
         if (visible) {
-            balanceText.textContent = '₦•••••••••';
+            balanceText.textContent = '$•••••••••';
             toggleBtn.classList.replace('bi-eye-slash', 'bi-eye');
         } else {
-            balanceText.textContent = '₦1,200,500.00';
+            balanceText.textContent = '$884,432.54';
             toggleBtn.classList.replace('bi-eye', 'bi-eye-slash');
         }
         visible = !visible;
@@ -54,7 +54,7 @@
         data: {
             labels: ['Deposit', 'Stocks', 'Profits', 'Losses', 'Savings'],
             datasets: [{
-                label: '₦',
+                label: '$',
                 data: [40000, 25000, 30000, 150, 23000],
                 backgroundColor: ['#0d6efd', '#dc3545', '#ffc107', '#198754', '#6c757d']
             }]

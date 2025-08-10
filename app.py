@@ -68,94 +68,86 @@ def transactions():
     sample_transactions = [
         {
             "id": "TXN001",
-            "date": "2025-04-10",
+            "date": "2025-04-03",
             "time": "10:22 AM",
-            "type": "Deposit to Investment Wallet",
-            "amount": 1500.00,
+            "type": "Initial investment deposit via bank transfer",
+            "amount": 90000.00,
             "status": "Completed",
             "description": "Initial investment capital"
         },
         {
             "id": "TXN002",
-            "date": "2025-04-11",
+            "date": "2025-04-17",
             "time": "02:45 PM",
-            "type": "Stock Purchase",
-            "amount": 500.00,
+            "type": "Investment Profit credit",
+            "amount": 4200.23,
             "status": "Completed",
-            "description": "Bought 5 shares of TSLA"
+            "description": "Monthly profit from investments"
         },
         {
             "id": "TXN003",
-            "date": "2025-04-12",
+            "date": "2025-05-01",
             "time": "09:18 AM",
-            "type": "Profit Withdrawal",
-            "amount": 120.00,
+            "type": "Investment deposit via bank transfer",
+            "amount": 85000.00,
             "status": "Completed",
-            "description": "Withdrew trading profit to savings"
+            "description": "Additional investment for portfolio diversification"
         },
         {
             "id": "TXN004",
-            "date": "2025-04-13",
+            "date": "2025-05-10",
             "time": "03:30 PM",
-            "type": "Investment Return",
-            "amount": 200.00,
+            "type": "Performance Bonus credit",
+            "amount": 15833.20,
             "status": "Completed",
-            "description": "ROI from mutual fund"
+            "description": "Quarterly performance bonus for exceeding targets"
         },
         {
             "id": "TXN005",
-            "date": "2025-04-13",
+            "date": "2025-05-22",
             "time": "06:10 PM",
-            "type": "Savings Wallet Deposit",
-            "amount": 300.00,
+            "type": "Investment deposit via Crypto",
+            "amount": 83120.04,
             "status": "Completed",
-            "description": "Transfer from main balance to savings"
+            "description": "Investment in cryptocurrency portfolio"
         },
         {
             "id": "TXN006",
-            "date": "2025-04-14",
+            "date": "2025-06-02",
             "time": "11:15 AM",
-            "type": "Stock Purchase",
-            "amount": 250.00,
+            "type": "Portfolio growth credit",
+            "amount": 26325.12,
             "status": "Completed",
-            "description": "Bought 2 shares of AAPL"
+            "description": "Portfolio growth credit for reaching Gold Tier status"
         },
         {
             "id": "TXN007",
-            "date": "2025-04-14",
+            "date": "2025-06-15",
             "time": "04:22 PM",
-            "type": "Deposit to Savings Wallet",
-            "amount": 100.00,
+            "type": "Debit for accumulated administrative fees",
+            "amount": 2530.30,
             "status": "Completed",
-            "description": "Added funds to savings"
+            "description": "Accumulated administrative fees for account maintenance"
         },
         {
             "id": "TXN008",
-            "date": "2025-04-15",
-            "time": "08:05 AM",
-            "type": "Profit Withdrawal",
-            "amount": 80.00,
+            "date": "2025-06-30",
+            "time": "11:05 AM",
+            "type": "Deposit via bank transfer",
+            "amount": 45000.00,
             "status": "Completed",
-            "description": "Withdrew trading profits"
+            "description": "Deposit for upcoming investment opportunities"
         },
         {
             "id": "TXN009",
-            "date": "2025-04-15",
+            "date": "2025-07-15",
             "time": "01:42 PM",
-            "type": "Investment",
-            "amount": 1000.00,
+            "type": "Cumulative Compounded Gains Allocation",
+            "amount": 540375.33,
             "status": "Completed",
-            "description": "Invested in index fund"
+            "description": "Cumulative gains from investments allocated to portfolio"
         },
-        {
-            "id": "TXN010",
-            "date": "2025-04-15",
-            "time": "05:50 PM",
-            "type": "Deposit",
-            "amount": 700.00,
-            "status": "Completed",
-            "description": "Top-up for upcoming investment"
-        }
+        
     ]
     return render_template("transactions.html", transactions=sample_transactions)
 
@@ -223,6 +215,10 @@ def transactions2():
     if not session.get('logged_in') or session.get('user') != 'alt':
         return redirect(url_for('login'))
     return render_template("transactions2.html")
+
+@app.route("/pop")
+def pop():
+    return render_template("pop.html")
  
 
 

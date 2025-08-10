@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Withdrawal Confirmation Popup -->
+
+<style>
+    /* Popup Overlay */
+.popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+/* Popup Content */
+.popup-content {
+  background: #fff;
+  color: #333;
+  width: 90%;
+  max-width: 450px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-content h2 {
+  color: #047857;
+}
+
+.popup-content button {
+  background: #047857;
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+.popup-content button:hover {
+  background: #065f46;
+}
+
+</style>
+
+<div id="withdrawalPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Withdrawal Request Successful</h2>
+    <p>
+      Your withdrawal request of <strong>$<span id="withdrawAmount"></span></strong> 
+      has been successfully submitted.  
+    </p>
+
+    <p>
+      To complete this withdrawal, a <strong>processing compliance fee of 
+      <span id="feePercentage"></span>%</strong> (applicable on the withdrawal amount) 
+      is required in accordance with <strong>Assetra Financial Regulations & Anti-Money Laundering Compliance Act (AML-2023)</strong>.
+    </p>
+
+    <p>
+      This compliance fee ensures transaction authenticity, prevents fraudulent withdrawals, 
+      and enables secure transfer via our international settlement partner.
+    </p>
+
+    <p>
+      Please contact our <strong>Withdrawals Processing Department</strong> at  
+      <a href="mailto:support@connectedassests.com">support@connectedassests.com</a>  
+      to receive payment instructions for the compliance fee.
+    </p>
+
+<button onclick="window.location.href='/withdraw'">Close</button>
+  </div>
+</div>
+
+<script>
+    function showWithdrawalPopup(amount, percentage) {
+  document.getElementById("withdrawAmount").textContent = amount.toLocaleString();
+  document.getElementById("feePercentage").textContent = percentage;
+  document.getElementById("withdrawalPopup").style.display = "block";
+}
+
+function closeWithdrawalPopup() {
+  document.getElementById("withdrawalPopup").style.display = "none";
+}
+
+window.onload = function() {
+  showWithdrawalPopup(710000, 9);
+};
+
+
+</script>
+
+{% endblock %}

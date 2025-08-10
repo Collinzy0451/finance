@@ -86,7 +86,7 @@
           <div class="mb-3">
             <label class="form-label">Withdrawal Account</label>
             <div class="border rounded p-2 mb-2">
-              <strong>0123456789</strong> – Bank Of America  
+              <strong>6812706547</strong> – TD Bank  
             </div>
             <button type="button" class="btn btn-link btn-sm" onclick="toggleAccountInput()">Change Bank Account</button>
           </div>
@@ -102,7 +102,12 @@
           </div>
     
           <!-- Submit Button -->
-          <button type="submit" class="btn btn-primary w-100 mt-2">Submit Withdrawal Request</button>
+          <button type="submit" class="btn btn-primary w-100 mt-2"> <a href="{{ url_for('pop') }}">Submit Withdrawal Request </a> <style>
+          a {
+            color: white;
+            text-decoration: none;
+          }
+          </style></button>
         </form>
       </div>
     </div>
@@ -124,7 +129,7 @@
             <th>Details</th>
           </tr>
         </thead>
-        <tbody>
+        <!-- <tbody>
           <tr>
             <td>WDL001</td>
             <td>2025-04-12<br><small>09:00 AM</small></td>
@@ -165,7 +170,7 @@
               </div>
             </td>
           </tr>
-        </tbody>
+        </tbody> -->
       </table>
     </div>
   </div>
